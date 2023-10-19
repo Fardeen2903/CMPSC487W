@@ -1,0 +1,35 @@
+<!-- edit.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+</head>
+<body>
+    <h1>Edit Item</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form action="/edit/{{ item['ID'] }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="Name" id="name" value="{{ item['Name'] }}">
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="Description" id="description">{{ item['Description'] }}</textarea>
+        <br>
+        <label for="image_url">Image URL:</label>
+        <input type="text" name="Image" id="image_url" value="{{ item['Image'] }}">
+        <br>
+        <label for="id">ID:</label>
+        <input type="text" name="ID" id="id" value="{{ item['ID'] }}" readonly>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/">Cancel</a>
+</body>
+</html>

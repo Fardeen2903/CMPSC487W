@@ -1,0 +1,35 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Item</title>
+</head>
+<body>
+    <h1>Add Item</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" name="Name" id="name">
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="Description" id="description"></textarea>
+        <br>
+        <label for="image">Image:</label>
+        <input type="file" name="Image" id="image">
+        <br>
+        <label for="id">ID:</label>
+        <input type="text" name="ID" id="id">
+        <br>
+        <button type="submit">Add</button>
+    </form>
+    <a href="/">Cancel</a>
+</body>
+</html>

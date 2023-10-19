@@ -1,0 +1,60 @@
+<!-- browse.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Browser</title>
+</head>
+<body>
+    <h1>Item Browser</h1>
+    <form action="/sort" method="get">
+        <label for="sort_by">Sort by:</label>
+        <select name="sort_by" id="sort_by">
+            <option value="ID">ID</option>
+            <option value="Name">Name</option>
+            <option value="Description">Description</option>
+            <option value="Image">Image URL</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+    <form action="/search" method="get">
+        <label for="search_by">Search by:</label>
+        <select name="search_by" id="search_by">
+            <option value="Name">Name</option>
+            <option value="Description">Description</option>
+            <option value="Image">Image URL</option>
+        </select>
+        <input type="text" name="search_term" id="search_term">
+        <button type="submit">Search</button>
+    </form>
+    <form action="/add" method="get">
+        <button type="submit">Add Item</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item['ID'] }}</td>
+                <td>{{ item['Name'] }}</td>
+                <td>{{ item['Description'] }}</td>
+                <td>
+                    <img src="{{ item['Image'] }}" alt="Item Image" width="100">
+                </td>
+                <td>
+                    <a href="/edit/{{ item['ID'] }}">Edit</a>
+                    <a href="/remove/{{ item['ID'] }}">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
