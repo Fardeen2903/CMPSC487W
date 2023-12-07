@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Tenants</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            margin: 0;
+            height: 100vh;
+            color: #fff; /* Adjust text color for readability */
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">View Tenants</h2>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Tenant ID</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Apartment Number</th>
+                    <th>Check-in Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tenant in tenants %}
+                <tr>
+                    <td>{{ tenant.doc_id }}</td>
+                    <td>{{ tenant.tenant_name }}</td>
+                    <td>{{ tenant.contact_number }}</td>
+                    <td>{{ tenant.tenant_email }}</td>
+                    <td>{{ tenant.apt_num }}</td>
+                    <td>{{ tenant.checkin_date }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_tenant', tenant_id=tenant.doc_id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <form action="{{ url_for('delete_tenant', tenant_id=tenant.doc_id) }}" method="post" style="display:inline;">
+                            <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

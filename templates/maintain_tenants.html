@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Tenants</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            margin: 0;
+            height: 100vh;
+            color: #fff; /* Adjust text color for readability */
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Manage Tenants</h2>
+        <nav class="nav nav-pills flex-column flex-sm-row mt-4">
+            <a class="flex-sm-fill text-sm-center nav-link active" href="{{ url_for('add_tenant') }}">Add Tenant</a>
+            <a class="flex-sm-fill text-sm-center nav-link active" href="{{ url_for('view_tenants') }}">View Tenants</a>
+        </nav>
+    </div>
+</body>
+</html>

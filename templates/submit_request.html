@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Maintenance Request</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            margin: 0;
+            height: 100vh;
+            color: #fff; /* Adjust text color for readability */
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Submit a Maintenance Request</h2>
+        <form action="{{ url_for('submit_request') }}" method="post" enctype="multipart/form-data" class="mt-3">
+            <div class="form-group">
+                <label for="request_id">Request ID:</label>
+                <input type="text" class="form-control" id="request_id" name="request_id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apt_num">Apartment Number:</label>
+                <input type="text" class="form-control" id="apt_num" name="apt_num" required>
+            </div>
+
+            <div class="form-group">
+                <label for="issue_area">Issue Area:</label>
+                <input type="text" class="form-control" id="issue_area" name="issue_area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="issue_description">Issue Description:</label>
+                <textarea class="form-control" id="issue_description" name="issue_description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo (optional):</label>
+                <input type="file" class="form-control-file" id="photo" name="photo" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>
